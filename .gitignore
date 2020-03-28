@@ -1,0 +1,7 @@
+__pycache__
+/.coverage
+/build
+/dist
+/flask_decop.egg-info
+/htmlcov
+/venv
