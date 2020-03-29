@@ -23,3 +23,24 @@ def iterable(request, outcome):
             yield str(i)
 
     return {"content-type": "text/plain"}, count5()
+
+
+def not_found(request, outcome):
+    return (
+        {"content-type": "application/json"},
+        json.dumps({"error": "Not Found"}),
+    )
+
+
+def method_not_allowed(request, outcome):
+    return (
+        {"content-type": "application/json"},
+        json.dumps({"error": "Method Not Allowed"}),
+    )
+
+
+def internal_server_error(request, outcome):
+    return (
+        {"content-type": "application/json"},
+        json.dumps({"error": "Internal Server Error"}),
+    )

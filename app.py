@@ -1,8 +1,8 @@
-import flask
+from flask import Flask
 from flask_decop import decop
 from sample_app import intents, responses
 
-app = flask.Flask(__name__, static_folder="htmlcov")
+app = Flask(__name__, static_folder="htmlcov")
 
 
 @app.route("/dogs", methods=["GET"])
@@ -42,15 +42,18 @@ def no_responses():
 
 
 @app.errorhandler(404)
+@decop.responses({404: responses.not_found})
 def not_found(error):
-    return flask.jsonify({"error": "Not Found"}), 404
+    pass
 
 
 @app.errorhandler(405)
+@decop.responses({405: responses.method_not_allowed})
 def method_not_allowed(error):
-    return flask.jsonify({"error": "Method Not Allowed"}), 405
+    pass
 
 
 @app.errorhandler(500)
+@decop.responses({500: responses.internal_server_error})
 def internal_server_error(error):
-    return flask.jsonify({"error": "Internal Server Error"}), 500
+    pass
