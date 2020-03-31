@@ -1,22 +1,25 @@
 # flask-decop
 
-Flask extension to write decorator-based apps.
+A Flask extension that forces extremely skinny controllers.
+
+```python
+@app.route("/dogs/<int:dog_id>", methods=["POST"])
+@decop.responses({200: responses.greet_dog, 400: responses.bad_request})
+@decop.intent(intents.greet_dog)
+def greet_dog(dog_id):
+    pass
+```
 
 ## Description
 
-This extension has two purposes:
-
-* Allow users to focus on writing of the application logic.
-* Improve the portability of the application code.
-
-It contains two decorators, `@decop.intent` and `@decop.responses`.
+This extension contains two decorators, `@decop.intent` and `@decop.responses`.
 
 * `@decop.intent(callable)`
-    * `callable`: Receive `flask.request`. Return `status_code` and `outcome`.
+    * `callable`: Receives `flask.request`, returns `status_code` and `outcome`.
 * `@decop.responses({status_code: callable, ...})`
-    * `callable`: Receive `flask.request` and `outcome`. Return `headers` and `body`.
+    * `callable`: Receives `flask.request` and `outcome`, returns `headers` and `body`.
 
-flask-decop will choose an appropriate response by `status_code`.
+`@decop.responses` will choose an appropriate response by `status_code`.
 
 ## Simple Usage
 
@@ -52,6 +55,10 @@ app = Flask(__name__)
 def index():
     pass
 ```
+
+## Detailed Usage
+
+See [app.py](https://github.com/iwamot/flask-decop/blob/master/app.py).
 
 ## Installation
 
