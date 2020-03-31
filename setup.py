@@ -9,8 +9,8 @@ with open(path.join(this_dir, "README.md")) as f:
 
 setup(
     name="flask-decop",
-    version="0.1.0",
-    description="Flask extension to write decorator-based apps.",
+    version="0.1.1",
+    description="A Flask extension that forces extremely skinny controllers.",
     url="https://github.com/iwamot/flask-decop/",
     license="MIT",
     author="Takashi Iwamoto",
