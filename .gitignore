@@ -2,6 +2,6 @@ __pycache__
 /.coverage
 /build
 /dist
-/flask_decop.egg-info
+/flask_skinny.egg-info
 /htmlcov
 /venv

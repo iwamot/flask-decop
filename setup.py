@@ -8,14 +8,14 @@ with open(path.join(this_dir, "README.md")) as f:
 
 
 setup(
-    name="flask-decop",
-    version="0.1.1",
+    name="flask-skinny",
+    version="0.1.2",
     description="A Flask extension that forces extremely skinny controllers.",
-    url="https://github.com/iwamot/flask-decop/",
+    url="https://github.com/iwamot/flask-skinny/",
     license="MIT",
     author="Takashi Iwamoto",
     author_email="hello@iwamot.com",
-    packages=["flask_decop"],
+    packages=["flask_skinny"],
     install_requires=["Flask"],
     long_description=long_description,
     long_description_content_type="text/markdown",

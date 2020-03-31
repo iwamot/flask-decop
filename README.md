@@ -1,31 +1,31 @@
-# flask-decop
+# flask-skinny
 
 A Flask extension that forces extremely skinny controllers.
 
 ```python
 @app.route("/dogs/<int:dog_id>", methods=["POST"])
-@decop.responses({200: responses.greet_dog, 400: responses.bad_request})
-@decop.intent(intents.greet_dog)
+@skinny.responses({200: responses.greet_dog, 400: responses.bad_request})
+@skinny.intent(intents.greet_dog)
 def greet_dog(dog_id):
     pass
 ```
 
 ## Description
 
-This extension contains two decorators, `@decop.intent` and `@decop.responses`.
+This extension contains two decorators, `@skinny.intent` and `@skinny.responses`.
 
-* `@decop.intent(callable)`
+* `@skinny.intent(callable)`
     * `callable`: Receives `flask.request`, returns `status_code` and `outcome`.
-* `@decop.responses({status_code: callable, ...})`
+* `@skinny.responses({status_code: callable, ...})`
     * `callable`: Receives `flask.request` and `outcome`, returns `headers` and `body`.
 
-`@decop.responses` will choose an appropriate response by `status_code`.
+`@skinny.responses` will choose an appropriate response by `status_code`.
 
 ## Simple Usage
 
 ```python
 from flask import Flask
-from flask_decop import decop
+from flask_skinny import skinny
 from random import randint
 import json
 
@@ -50,19 +50,19 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET"])
-@decop.responses({200: response, 403: response})
-@decop.intent(intent)
+@skinny.responses({200: response, 403: response})
+@skinny.intent(intent)
 def index():
     pass
 ```
 
 ## Detailed Usage
 
-See [app.py](https://github.com/iwamot/flask-decop/blob/master/app.py).
+See [app.py](https://github.com/iwamot/flask-skinny/blob/master/app.py).
 
 ## Installation
 
-`$ pip install flask-decop`
+`$ pip install flask-skinny`
 
 ## Contribution
 
